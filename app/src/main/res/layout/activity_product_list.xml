@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:orientation="horizontal"
+        android:weightSum="16"
+        android:id="@+id/panel"
+        android:background="#F5E9E2">
+
+        <ImageView
+            android:src="@drawable/ic_round_arrow_back_24"
+            android:layout_gravity="start|center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+        
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="11"
+            android:gravity="center"
+            android:fontFamily="casual"
+            android:text="Cakes &amp; Beans"
+            android:textColor="#553C3C"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"/>
+        <FrameLayout
+            android:id="@+id/btnCart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+            <ImageView
+                android:id="@+id/cartButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                app:srcCompat="@drawable/ic_round_shopping_cart_24" />
+            <com.nex3z.notificationbadge.NotificationBadge
+                android:id="@+id/badge"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toRightOf = "@id/cartButton"
+                android:layout_alignTop = "@id/cartButton"
+                android:layout_marginLeft="10dp"
+                app:nbMaxTextLength="2"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/panel"
+        android:padding="8dp"/>
+
+</RelativeLayout>

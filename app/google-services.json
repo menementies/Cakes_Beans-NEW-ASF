@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "54127331885",
+    "project_id": "cakes-and-beans-new-842c7",
+    "storage_bucket": "cakes-and-beans-new-842c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54127331885:android:dfcde93a988114327046a4",
+        "android_client_info": {
+          "package_name": "com.example.cakesbeans"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54127331885-7i0poo4v1j9mpe4tkd60apee5n53l1ff.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cakesbeans",
+            "certificate_hash": "fa074762dfbf8c2e918cfaa568276160692a1226"
+          }
+        },
+        {
+          "client_id": "54127331885-aa71e2ghiuvei5udp24sh5gq31hoj9uf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKLseLOj3p1U1Nb2o-fjZvIzCw_yIEFfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54127331885-aa71e2ghiuvei5udp24sh5gq31hoj9uf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
