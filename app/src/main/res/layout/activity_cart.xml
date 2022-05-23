@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu"
+    android:background="@color/dark_white">
+
+    <LinearLayout
+        android:id="@+id/panel"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:weightSum="16"
+        android:orientation="horizontal"
+        android:background="@color/maroon">
+        
+        <ImageView
+            android:id="@+id/btnback"
+            android:src="@drawable/ic_round_arrow_back_24"
+            android:layout_width="45dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/white"></ImageView>
+
+        <TextView
+            android:id="@+id/txtTotal"
+            android:text="MY CART"
+            android:layout_gravity="center_vertical"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="15"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"></TextView>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_cart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/panel"
+        android:padding="8dp"></androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>
