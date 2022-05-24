@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mainLayout">
+    android:id="@+id/mainLayout"
+    tools:context=".MainMenu">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         android:background="#F5E9E2">
 
         <ImageView
-            android:id="@+id/btnback"
+            android:id="@+id/btnBack"
             android:src="@drawable/ic_round_arrow_back_24"
             android:layout_gravity="start|center_vertical"
             android:layout_width="0dp"
@@ -41,19 +42,17 @@
             android:layout_height="match_parent"
             android:layout_weight="3">
             <ImageView
-                android:id="@+id/cartButton"
+                android:id="@+id/showCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:clickable="true"
-                app:srcCompat="@drawable/ic_round_shopping_cart_24"
-                ></ImageView>
+                app:srcCompat="@drawable/ic_round_shopping_cart_24" />
             <com.nex3z.notificationbadge.NotificationBadge
                 android:id="@+id/badge"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_toRightOf = "@id/cartButton"
-                android:layout_alignTop = "@id/cartButton"
+                android:layout_toRightOf = "@id/showCart"
+                android:layout_alignTop = "@id/showCart"
                 android:layout_marginLeft="10dp"
                 app:nbMaxTextLength="2"/>
         </FrameLayout>

@@ -94,8 +94,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderV
                                         iCartLoadListener.onCartLoadFailed("Add to Cart Success");
                                     })
                                     .addOnFailureListener(e -> iCartLoadListener.onCartLoadFailed(e.getMessage()));
-                        }
-                        else{
+                        } else{
                             CartModel cartModel = new CartModel();
                             cartModel.setName(orderModel.getName());
                             cartModel.setImage(orderModel.getImage());
@@ -110,9 +109,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderV
                                         iCartLoadListener.onCartLoadFailed("Add to Cart Success");
                                     })
                                     .addOnFailureListener(e -> iCartLoadListener.onCartLoadFailed(e.getMessage()));
-
                         }
-
                         EventBus.getDefault().postSticky(new MyUpdateCartEvent());
                     }
 

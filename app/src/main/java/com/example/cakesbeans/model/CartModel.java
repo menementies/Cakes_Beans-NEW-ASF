@@ -4,6 +4,7 @@ public class CartModel {
     private String key, name, image, price;
     private int quantity;
     private float totalPrice;
+
     public CartModel(){
     }
 

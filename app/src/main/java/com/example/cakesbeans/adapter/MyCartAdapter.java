@@ -20,6 +20,7 @@ import com.example.cakesbeans.model.CartModel;
 import com.google.firebase.database.FirebaseDatabase;
 
 import org.greenrobot.eventbus.EventBus;
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -52,10 +53,10 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyCartView
         holder.txtName.setText(new StringBuilder().append(cartModelList.get(position).getName()));
         holder.txtQuantity.setText(new StringBuilder().append(cartModelList.get(position).getQuantity()));
 
-        holder.btnMinus.setOnClickListener(view -> {
+        holder.btnMinus.setOnClickListener(v -> {
             minusCartItem(holder,cartModelList.get(position));
         });
-        holder.btnPlus.setOnClickListener(view -> {
+        holder.btnPlus.setOnClickListener(v -> {
             plusCartItem(holder,cartModelList.get(position));
         });
 
@@ -111,7 +112,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyCartView
                 .child(cartModel.getKey())
                 .setValue(cartModel)
                 .addOnSuccessListener(avoid -> EventBus.getDefault().postSticky(new MyUpdateCartEvent()));
-
     }
 
     @Override
@@ -119,26 +119,26 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.MyCartView
         return cartModelList.size();
     }
 
-    public class MyCartViewHolder extends RecyclerView.ViewHolder{
-        @BindView(R.id.btnMinus)
-        ImageView btnMinus;
-        @BindView(R.id.btnPlus)
-        ImageView btnPlus;
-        @BindView(R.id.btnDelete)
-        ImageView btnDelete;
-        @BindView(R.id.imageView)
-        ImageView imageView;
-        @BindView(R.id.txtName)
-        TextView txtName;
-        @BindView(R.id.txtPrice)
-        TextView txtPrice;
-        @BindView(R.id.txtQuantity)
-        TextView txtQuantity;
+    public class MyCartViewHolder extends RecyclerView.ViewHolder {
+        private TextView txtName;
+        private ImageView btnMinus;
+        private ImageView btnPlus;
+        private ImageView btnDelete;
+        private TextView txtPrice;
+        private TextView txtQuantity;
+        private ImageView imageView;
 
-            Unbinder unbinder;
+        Unbinder unbinder;
         public MyCartViewHolder(@NonNull View itemView){
             super (itemView);
-            unbinder = ButterKnife.bind(this,itemView);
+            txtName = itemView.findViewById(R.id.txtName);
+            btnMinus = itemView.findViewById(R.id.btnMinus);
+            btnDelete = itemView.findViewById(R.id.btnDelete);
+            imageView = itemView.findViewById(R.id.imageView);
+            btnPlus = itemView.findViewById(R.id.btnPlus);
+            txtPrice = itemView.findViewById(R.id.txtPrice);
+            txtQuantity = itemView.findViewById(R.id.txtQuantity);
+
         }
     }
 }

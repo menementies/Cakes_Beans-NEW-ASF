@@ -20,6 +20,7 @@ import com.example.cakesbeans.model.CartModel;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -37,53 +38,30 @@ public class CartActivity extends AppCompatActivity implements ICartLoadListener
 
     @BindView(R.id.recycler_cart)
     RecyclerView recyclerCart;
-    @BindView(R.id.mainLayout)
-    RelativeLayout mainLayout;
+    @BindView(R.id.mainCart)
+    RelativeLayout mainCart;
     @BindView(R.id.btn_back)
-    ImageView btnback;
+    ImageView btnBack;
     @BindView(R.id.txtTotal)
     TextView txtTotal;
 
     ICartLoadListener cartLoadListener;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    protected void onStop() {
-        if(EventBus.getDefault().hasSubscriberForEvent(MyUpdateCartEvent.class));
-        EventBus.getDefault().removeStickyEvent(MyUpdateCartEvent.class);
-        EventBus.getDefault().unregister(this);
-        super.onStop();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
-    public void onUpdateCart(MyUpdateCartEvent event)
-    {
-        loadCartFromFirebase();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        ImageView btnback;
-        btnback = findViewById(R.id.btnback);
-        btnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent next= new Intent(CartActivity.this,MainMenu.class);
-                startActivity(next);
-                finish();
-            }
+
+        btnBack.setOnClickListener(v -> {
+            Intent next= new Intent(CartActivity.this,MainMenu.class);
+            startActivity(next);
+            finish();
         });
 
         init();
         loadCartFromFirebase();
+
     }
 
     private void loadCartFromFirebase(){
@@ -128,13 +106,13 @@ public class CartActivity extends AppCompatActivity implements ICartLoadListener
         for(CartModel cartModel:cartModelList){
             sum += cartModel.getTotalPrice();
         }
-        txtTotal.setText(new StringBuilder("P").append(sum));
+        txtTotal.setText(new StringBuilder("₱").append(sum));
         MyCartAdapter adapter = new MyCartAdapter(this, cartModelList);
         recyclerCart.setAdapter(adapter);
     }
 
     @Override
     public void onCartLoadFailed(String message) {
-        Snackbar.make(mainLayout,message,Snackbar.LENGTH_LONG).show();
+        Snackbar.make(mainCart,message,Snackbar.LENGTH_LONG).show();
     }
 }

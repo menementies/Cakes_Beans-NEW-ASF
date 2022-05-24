@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.BlendMode;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -76,9 +74,9 @@ public class MainMenu extends AppCompatActivity implements IOrderLoadListener, I
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_list);
 
-        ImageView btnback;
-        btnback = findViewById(R.id.btnback);
-        btnback.setOnClickListener(new View.OnClickListener() {
+        ImageView btnBack;
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                Intent next= new Intent(MainMenu.this,Menu.class);
@@ -86,20 +84,11 @@ public class MainMenu extends AppCompatActivity implements IOrderLoadListener, I
                 finish();
             }
         });
-        ImageView btncart;
-        btncart = findViewById(R.id.cartButton);
-        btncart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent next= new Intent(MainMenu.this,CartActivity.class);
-                startActivity(next);
-                finish();
-            }
-        });
 
         init();
         loadOrderFromFirebase();
-        countCartItem();;
+        countCartItem();
+
     }
 
     private void loadOrderFromFirebase() {
@@ -137,7 +126,11 @@ public class MainMenu extends AppCompatActivity implements IOrderLoadListener, I
         recycler_menu.setLayoutManager(gridLayoutManager);
         recycler_menu.addItemDecoration(new SpaceItemDecoration());
 
-        btnCart.setOnClickListener(view -> startActivity(new Intent(this,CartActivity.class)));
+        btnCart.setOnClickListener(v -> {
+            Intent next= new Intent(MainMenu.this,CartActivity.class);
+            startActivity(next);
+            finish();
+        });
     }
 
     @Override
